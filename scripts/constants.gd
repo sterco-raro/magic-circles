@@ -1,0 +1,11 @@
+class_name Constants extends RefCounted
+
+const INNER_CIRCLE_RADIUS_MIN: int = 60
+const INNER_CIRCLE_RADIUS_MAX: int = 120
+const INNER_CIRCLE_SPACING_MIN: int = 3
+const INNER_CIRCLE_SPACING_MAX: int = 10
+
+const OUTER_CIRCLE_RADIUS_MIN: int = 180
+const OUTER_CIRCLE_RADIUS_MAX: int = 320
+const OUTER_CIRCLE_SPACING_MIN: int = 3
+const OUTER_CIRCLE_SPACING_MAX: int = 10

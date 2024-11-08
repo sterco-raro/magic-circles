@@ -1,0 +1,193 @@
+[gd_scene load_steps=7 format=3 uid="uid://3ws1pgsq3760"]
+
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_3waeb"]
+[ext_resource type="Shader" path="res://scenes/main/static-background.gdshader" id="2_3dt4e"]
+[ext_resource type="PackedScene" uid="uid://dhwj8m508mqy1" path="res://scenes/magic_circle_renderer.tscn" id="2_5d5ye"]
+[ext_resource type="Texture2D" uid="uid://ddxhygtnannhi" path="res://assets/background.png" id="2_vl50m"]
+[ext_resource type="StyleBox" uid="uid://bvfw2mamqhny6" path="res://scenes/main/side_panel_flat.tres" id="5_w0jeq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rncf1"]
+shader = ExtResource("2_3dt4e")
+shader_parameter/background_color = Color(1, 1, 1, 1)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_3waeb")
+
+[node name="Background" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_rncf1")
+texture = ExtResource("2_vl50m")
+
+[node name="MagicCircleRenderer" parent="." instance=ExtResource("2_5d5ye")]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Settings" type="MarginContainer" parent="UI"]
+offset_right = 226.0
+offset_bottom = 95.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/Settings"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("5_w0jeq")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Settings/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Settings/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="General" type="VBoxContainer" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/General"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "General"
+
+[node name="Body" type="MarginContainer" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/General"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/General/Body"]
+layout_mode = 2
+
+[node name="Color" type="HBoxContainer" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/General/Body/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/General/Body/VBoxContainer/Color"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Color"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/General/Body/VBoxContainer/Color"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="InnerCircle" type="VBoxContainer" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/InnerCircle"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Inner Circle"
+
+[node name="Body" type="MarginContainer" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/InnerCircle"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/InnerCircle/Body"]
+layout_mode = 2
+
+[node name="Radius" type="VBoxContainer" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/InnerCircle/Body/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/InnerCircle/Body/VBoxContainer/Radius"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Radius"
+
+[node name="RadiusSliderIn" type="HSlider" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/InnerCircle/Body/VBoxContainer/Radius"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+
+[node name="DoubleLine" type="HBoxContainer" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/InnerCircle/Body/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/InnerCircle/Body/VBoxContainer/DoubleLine"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Double line"
+
+[node name="DoubleButtonIn" type="CheckButton" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/InnerCircle/Body/VBoxContainer/DoubleLine"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Spacing" type="VBoxContainer" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/InnerCircle/Body/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/InnerCircle/Body/VBoxContainer/Spacing"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Double line spacing"
+
+[node name="SpacingSliderIn" type="HSlider" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/InnerCircle/Body/VBoxContainer/Spacing"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="OuterCircle" type="VBoxContainer" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/OuterCircle"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Outer Circle"
+
+[node name="Body" type="MarginContainer" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/OuterCircle"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/OuterCircle/Body"]
+layout_mode = 2
+
+[node name="Radius" type="VBoxContainer" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/OuterCircle/Body/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/OuterCircle/Body/VBoxContainer/Radius"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Radius"
+
+[node name="RadiusSliderOut" type="HSlider" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/OuterCircle/Body/VBoxContainer/Radius"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+
+[node name="DoubleLine" type="HBoxContainer" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/OuterCircle/Body/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/OuterCircle/Body/VBoxContainer/DoubleLine"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Double line"
+
+[node name="DoubleButtonOut" type="CheckButton" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/OuterCircle/Body/VBoxContainer/DoubleLine"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Spacing" type="VBoxContainer" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/OuterCircle/Body/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/OuterCircle/Body/VBoxContainer/Spacing"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Double line spacing"
+
+[node name="SpacingSliderOut" type="HSlider" parent="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/OuterCircle/Body/VBoxContainer/Spacing"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="color_changed" from="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/General/Body/VBoxContainer/Color/ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]
+[connection signal="value_changed" from="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/InnerCircle/Body/VBoxContainer/Radius/RadiusSliderIn" to="." method="_on_radius_slider_in_value_changed"]
+[connection signal="toggled" from="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/InnerCircle/Body/VBoxContainer/DoubleLine/DoubleButtonIn" to="." method="_on_double_button_in_toggled"]
+[connection signal="value_changed" from="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/InnerCircle/Body/VBoxContainer/Spacing/SpacingSliderIn" to="." method="_on_spacing_slider_in_value_changed"]
+[connection signal="value_changed" from="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/OuterCircle/Body/VBoxContainer/Radius/RadiusSliderOut" to="." method="_on_radius_slider_out_value_changed"]
+[connection signal="toggled" from="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/OuterCircle/Body/VBoxContainer/DoubleLine/DoubleButtonOut" to="." method="_on_double_button_out_toggled"]
+[connection signal="value_changed" from="UI/Settings/PanelContainer/MarginContainer/VBoxContainer/OuterCircle/Body/VBoxContainer/Spacing/SpacingSliderOut" to="." method="_on_spacing_slider_out_value_changed"]
