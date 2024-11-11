@@ -1,5 +1,6 @@
 extends Node2D
 
+#region ONREADY PROPS
 @onready
 var background: Sprite2D = $Background
 
@@ -26,13 +27,14 @@ var spacing_slider_out: HSlider = %SpacingSliderOut
 
 @onready
 var renderer: MagicCircleRenderer = $MagicCircleRenderer
+#endregion
 
 func _ready() -> void:
 	# Center objects on screen
 	background.scale = Vector2(3, 2)
 	background.position = get_viewport_rect().get_center()
 	renderer.position = get_viewport_rect().get_center()
-	# Update initial settings
+	#region STARTUP SETTINGS
 	radius_slider_in.min_value = Constants.INNER_CIRCLE_RADIUS_MIN
 	radius_slider_in.max_value = Constants.INNER_CIRCLE_RADIUS_MAX
 	radius_slider_out.min_value = Constants.OUTER_CIRCLE_RADIUS_MIN
@@ -41,6 +43,7 @@ func _ready() -> void:
 	spacing_slider_in.max_value = Constants.INNER_CIRCLE_SPACING_MAX
 	spacing_slider_out.min_value = Constants.OUTER_CIRCLE_SPACING_MIN
 	spacing_slider_out.max_value = Constants.OUTER_CIRCLE_SPACING_MAX
+	#endregion
 	# Generate a new circle
 	reset()
 
