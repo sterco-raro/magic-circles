@@ -26,6 +26,15 @@ func draw_magic_arc(arc: MagicArc, center: Vector2, color: Color, width: int) ->
 	else:
 		draw_arc(center, arc.radius, 0, 2*PI, 200, color, width, true)
 
+	# Draw equidistant smaller circles on the main arc
+	if arc.embedded:
+		var x: float
+		var y: float
+		for i in arc.embedded:
+			x = center.x + arc.radius * cos(arc.embedded_offset_rad + arc.embedded_distance_rad * i)
+			y = center.y + arc.radius * sin(arc.embedded_offset_rad + arc.embedded_distance_rad * i)
+			draw_arc(Vector2(x, y), arc.embedded_radius, 0, 2*PI, 100, color, width, true)
+
 func set_color(color: Color):
 	_color = color
 	queue_redraw()
