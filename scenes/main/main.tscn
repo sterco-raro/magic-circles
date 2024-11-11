@@ -128,15 +128,16 @@ theme_override_constants/margin_left = 64
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Spacing" type="VBoxContainer" parent="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/InnerCircle/CategoryBody/VBoxContainer"]
+[node name="InnerDoubleSpacing" type="VBoxContainer" parent="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/InnerCircle/CategoryBody/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/InnerCircle/CategoryBody/VBoxContainer/Spacing"]
+[node name="Label" type="Label" parent="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/InnerCircle/CategoryBody/VBoxContainer/InnerDoubleSpacing"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "Double line spacing"
 
-[node name="InnSpacingSlider" type="HSlider" parent="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/InnerCircle/CategoryBody/VBoxContainer/Spacing"]
+[node name="InnSpacingSlider" type="HSlider" parent="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/InnerCircle/CategoryBody/VBoxContainer/InnerDoubleSpacing"]
 unique_name_in_owner = true
 layout_mode = 2
 
@@ -242,15 +243,16 @@ theme_override_constants/margin_left = 64
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Spacing" type="VBoxContainer" parent="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/OuterCircle/CategoryBody/VBoxContainer"]
+[node name="OuterDoubleSpacing" type="VBoxContainer" parent="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/OuterCircle/CategoryBody/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/OuterCircle/CategoryBody/VBoxContainer/Spacing"]
+[node name="Label" type="Label" parent="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/OuterCircle/CategoryBody/VBoxContainer/OuterDoubleSpacing"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "Double line spacing"
 
-[node name="OutSpacingSlider" type="HSlider" parent="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/OuterCircle/CategoryBody/VBoxContainer/Spacing"]
+[node name="OutSpacingSlider" type="HSlider" parent="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/OuterCircle/CategoryBody/VBoxContainer/OuterDoubleSpacing"]
 unique_name_in_owner = true
 layout_mode = 2
 
@@ -312,13 +314,13 @@ layout_mode = 2
 [connection signal="color_changed" from="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/General/CategoryBody/VBoxContainer/Color/ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]
 [connection signal="value_changed" from="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/InnerCircle/CategoryBody/VBoxContainer/Radius/InnRadiusSlider" to="." method="_on_inn_radius_slider_value_changed"]
 [connection signal="toggled" from="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/InnerCircle/CategoryBody/VBoxContainer/DoubleLine/MarginContainer/InnDoubleButton" to="." method="_on_inn_double_button_toggled"]
-[connection signal="value_changed" from="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/InnerCircle/CategoryBody/VBoxContainer/Spacing/InnSpacingSlider" to="." method="_on_inn_spacing_slider_value_changed"]
+[connection signal="value_changed" from="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/InnerCircle/CategoryBody/VBoxContainer/InnerDoubleSpacing/InnSpacingSlider" to="." method="_on_inn_spacing_slider_value_changed"]
 [connection signal="value_changed" from="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/InnerCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer/Number/InnRingsNumberSlider" to="." method="_on_inn_rings_number_slider_value_changed"]
 [connection signal="value_changed" from="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/InnerCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer/Radius/InnRingsRadiusSlider" to="." method="_on_inn_rings_radius_slider_value_changed"]
 [connection signal="value_changed" from="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/InnerCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer/Offset/InnRingsOffsetSlider" to="." method="_on_inn_rings_offset_slider_value_changed"]
 [connection signal="value_changed" from="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/OuterCircle/CategoryBody/VBoxContainer/Radius/OutRadiusSlider" to="." method="_on_out_radius_slider_value_changed"]
 [connection signal="toggled" from="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/OuterCircle/CategoryBody/VBoxContainer/DoubleLine/MarginContainer/OutDoubleButton" to="." method="_on_out_double_button_toggled"]
-[connection signal="value_changed" from="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/OuterCircle/CategoryBody/VBoxContainer/Spacing/OutSpacingSlider" to="." method="_on_out_spacing_slider_value_changed"]
+[connection signal="value_changed" from="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/OuterCircle/CategoryBody/VBoxContainer/OuterDoubleSpacing/OutSpacingSlider" to="." method="_on_out_spacing_slider_value_changed"]
 [connection signal="value_changed" from="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/OuterCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer/Number/OutRingsNumberSlider" to="." method="_on_out_rings_number_slider_value_changed"]
 [connection signal="value_changed" from="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/OuterCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer/Radius/OutRingsRadiusSlider" to="." method="_on_out_rings_radius_slider_value_changed"]
 [connection signal="value_changed" from="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/OuterCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer/Offset/OutRingsOffsetSlider" to="." method="_on_out_rings_offset_slider_value_changed"]

@@ -87,46 +87,54 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_released("reset"):
 		reset()
 
-func update_color(color: Color):
-	renderer.set_color(color)
-	# Match background and circle color, using a lighter shade for the bg
-	background.material.set_shader_parameter("background_color", color / 2)
-	# Set color picker value
-	color_picker.color = color
-
 func reset():
 	var circle: MagicCircle = MagicCircleGenerator.generate()
 	var color: Color = Color(randf(), randf(), randf(), 1)
 
 	renderer.set_data.emit(circle)
 
-	# Update inner circle controls
+	# Update general UI controls
+	color_picker.color = color
+	update_background_color(color)
+
+	# Update inner circle UI controls
 	inner_radius_slider.value = circle.inner.radius
 	inner_double_button.button_pressed = circle.inner.double
+	update_inner_spacing_slider_visibility(circle.inner.double)
 	inner_spacing_slider.value = circle.inner.spacing
 	inner_rings_number_slider.value = circle.inner.rings
 	inner_rings_radius_slider.value = circle.inner.rings_radius
 	inner_rings_offset_slider.value = snappedf(rad_to_deg(circle.inner.rings_offset_rad), 0.01)
 
-	# Update outer circle controls
+	# Update outer circle UI controls
 	outer_radius_slider.value = circle.outer.radius
 	outer_double_button.button_pressed = circle.outer.double
+	update_outer_spacing_slider_visibility(circle.outer.double)
 	outer_spacing_slider.value = circle.outer.spacing
 	outer_rings_number_slider.value = circle.outer.rings
 	outer_rings_radius_slider.value = circle.outer.rings_radius
 	outer_rings_offset_slider.value = snappedf(rad_to_deg(circle.outer.rings_offset_rad), 0.01)
 
-	update_color(color)
+func update_background_color(color: Color):
+	background.material.set_shader_parameter("background_color", color / 2)
+
+func update_inner_spacing_slider_visibility(visibility: bool):
+	%InnerDoubleSpacing.visible = visibility
+
+func update_outer_spacing_slider_visibility(visibility: bool):
+	%OuterDoubleSpacing.visible = visibility
 
 #region SIGNALS
 func _on_color_picker_button_color_changed(color: Color) -> void:
-	update_color(color)
+	renderer.set_color(color)
+	update_background_color(color)
 
 func _on_inn_radius_slider_value_changed(value: float) -> void:
 	renderer.set_inner_radius.emit(value)
 
 func _on_inn_double_button_toggled(toggled_on: bool) -> void:
 	renderer.set_inner_double.emit(toggled_on)
+	update_inner_spacing_slider_visibility(toggled_on)
 
 func _on_inn_spacing_slider_value_changed(value: float) -> void:
 	renderer.set_inner_spacing.emit(value)
@@ -145,6 +153,7 @@ func _on_out_radius_slider_value_changed(value: float) -> void:
 
 func _on_out_double_button_toggled(toggled_on: bool) -> void:
 	renderer.set_outer_double.emit(toggled_on)
+	update_outer_spacing_slider_visibility(toggled_on)
 
 func _on_out_spacing_slider_value_changed(value: float) -> void:
 	renderer.set_outer_spacing.emit(value)
