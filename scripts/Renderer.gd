@@ -2,9 +2,8 @@ class_name MagicCircleRenderer extends Node2D
 
 signal set_data(circle: MagicCircle)
 
-signal set_color(color: Color)
-
-signal set_inner_draw_toggle(value: bool)
+signal set_inner_visibility(value: bool)
+signal set_inner_line_color(value: Color)
 signal set_inner_radius(value: int)
 signal set_inner_double(value: bool)
 signal set_inner_spacing(value: int)
@@ -12,7 +11,8 @@ signal set_inner_rings_number(value: int)
 signal set_inner_rings_radius(value: int)
 signal set_inner_rings_offset(value: float)
 
-signal set_outer_draw_toggle(value: bool)
+signal set_outer_visibility(value: bool)
+signal set_outer_line_color(value: Color)
 signal set_outer_radius(value: int)
 signal set_outer_double(value: bool)
 signal set_outer_spacing(value: int)
@@ -22,17 +22,18 @@ signal set_outer_rings_offset(value: float)
 
 var _circle: MagicCircle
 
-var _color: Color = Color.BEIGE
+var _inner_circle_line_color: Color = Color.BEIGE
+var _outer_circle_line_color: Color = Color.BEIGE
 
-var _draw_inner_circle: bool = true
-var _draw_outer_circle: bool = true
+var _is_inner_circle_visible: bool = true
+var _is_outer_circle_visible: bool = true
 
 func _draw() -> void:
 	if _circle:
-		if _draw_inner_circle:
-			draw_magic_arc(_circle.inner, _circle.position, _color, 2)
-		if _draw_outer_circle:
-			draw_magic_arc(_circle.outer, _circle.position, _color, 2)
+		if _is_inner_circle_visible:
+			draw_magic_arc(_circle.inner, _circle.position, _inner_circle_line_color, 2)
+		if _is_outer_circle_visible:
+			draw_magic_arc(_circle.outer, _circle.position, _outer_circle_line_color, 2)
 
 func draw_magic_arc(arc: MagicArc, center: Vector2, color: Color, width: int) -> void:
 
@@ -99,8 +100,8 @@ func circles_intersections(c0: Vector2, c1: Vector2, r0: float, r1: float):
 
 	return [Vector2(xp1, yp1), Vector2(xp2, yp2)]
 
-# Compute the angle between the two tangents to the second circle that connects to the center of the first one
 func angle_between_tangents(center1: Vector2, center2: Vector2, radius1: float, radius2: float):
+	# Compute the angle between the two tangents to the second circle that connects to the center of the first one
 	var results = circles_intersections(center1, center2, radius1, radius2)
 	var p1: Vector2 = results[0]
 	var p2: Vector2 = results[1]
@@ -117,12 +118,12 @@ func _on_set_data(circle: MagicCircle) -> void:
 	_circle = circle
 	queue_redraw()
 
-func _on_set_color(color: Color):
-	_color = color
+func _on_set_inner_visibility(value: bool) -> void:
+	_is_inner_circle_visible = value
 	queue_redraw()
 
-func _on_set_inner_draw_toggle(value: bool) -> void:
-	_draw_inner_circle = value
+func _on_set_inner_line_color(value: Color) -> void:
+	_inner_circle_line_color = value
 	queue_redraw()
 
 func _on_set_inner_radius(value: int) -> void:
@@ -156,8 +157,12 @@ func _on_set_inner_rings_radius(value: int) -> void:
 		_circle.inner.rings_radius = value
 		queue_redraw()
 
-func _on_set_outer_draw_toggle(value: bool) -> void:
-	_draw_outer_circle = value
+func _on_set_outer_visibility(value: bool) -> void:
+	_is_outer_circle_visible = value
+	queue_redraw()
+
+func _on_set_outer_line_color(value: Color) -> void:
+	_outer_circle_line_color = value
 	queue_redraw()
 
 func _on_set_outer_radius(value: int) -> void:

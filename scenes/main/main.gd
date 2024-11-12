@@ -5,10 +5,13 @@ extends Node2D
 var background: Sprite2D = $Background
 
 @onready
-var color_picker: ColorPickerButton = %ColorPickerButton
+var background_color_picker: ColorPickerButton = %BackgroundColorPickerButton
 
 @onready
 var inner_ui_body: MarginContainer = $UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/InnerCircle/CategoryBody
+
+@onready
+var inner_line_color_picker: ColorPickerButton = %InnerLineColorButton
 
 @onready
 var inner_double_button: CheckButton = %InnDoubleButton
@@ -36,6 +39,9 @@ var inner_rings_offset_slider: HSlider = %InnRingsOffsetSlider
 
 @onready
 var outer_ui_body: MarginContainer = $UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/OuterCircle/CategoryBody
+
+@onready
+var outer_line_color_picker: ColorPickerButton = %OuterLineColorButton
 
 @onready
 var outer_double_button: CheckButton = %OutDoubleButton
@@ -110,14 +116,16 @@ func reset():
 	var color: Color = Color(randf(), randf(), randf(), 1)
 
 	renderer.set_data.emit(circle)
-	renderer.set_color.emit(color)
 
 	#region UPDATE UI CONTROLS
 	# Section: general
-	color_picker.color = color
-	update_background_color(color)
+	renderer.set_inner_line_color.emit(color)
+	renderer.set_outer_line_color.emit(color)
+	background_color_picker.color = color / 2
+	update_background_color(color / 2)
 
 	# Section: inner circle
+	inner_line_color_picker.color = color
 	inner_radius_slider.value = circle.inner.radius
 	inner_double_button.button_pressed = circle.inner.double
 	update_inner_spacing_slider_visibility(circle.inner.double)
@@ -128,6 +136,7 @@ func reset():
 	inner_rings_offset_slider.value = snappedf(rad_to_deg(circle.inner.rings_offset_rad), 0.01)
 
 	# Section: outer circle
+	outer_line_color_picker.color = color
 	outer_radius_slider.value = circle.outer.radius
 	outer_double_button.button_pressed = circle.outer.double
 	update_outer_spacing_slider_visibility(circle.outer.double)
@@ -140,7 +149,7 @@ func reset():
 
 #region CUSTOM UI UPDATE FUNCTIONS
 func update_background_color(color: Color):
-	background.material.set_shader_parameter("background_color", color / 2)
+	background.material.set_shader_parameter("background_color", color)
 
 func update_inner_spacing_slider_visibility(visibility: bool):
 	%InnerDoubleSpacing.visible = visibility
@@ -158,13 +167,15 @@ func update_outer_rings_controls_visibility(visibility: bool):
 #endregion
 
 #region SIGNALS
-func _on_color_picker_button_color_changed(color: Color) -> void:
-	renderer.set_color.emit(color)
+func _on_background_color_picker_button_color_changed(color: Color) -> void:
 	update_background_color(color)
 
 func _on_inner_circle_toggle_toggled(toggled_on: bool) -> void:
 	renderer.set_inner_draw_toggle.emit(toggled_on)
 	inner_ui_body.visible = toggled_on
+
+func _on_inner_line_color_button_color_changed(color: Color) -> void:
+	renderer.set_inner_line_color.emit(color)
 
 func _on_inn_radius_slider_value_changed(value: float) -> void:
 	renderer.set_inner_radius.emit(value)
@@ -189,6 +200,9 @@ func _on_inn_rings_offset_slider_value_changed(value: float) -> void:
 func _on_outer_circle_toggle_toggled(toggled_on: bool) -> void:
 	renderer.set_outer_draw_toggle.emit(toggled_on)
 	outer_ui_body.visible = toggled_on
+
+func _on_outer_line_color_button_color_changed(color: Color) -> void:
+	renderer.set_outer_line_color.emit(color)
 
 func _on_out_radius_slider_value_changed(value: float) -> void:
 	renderer.set_outer_radius.emit(value)
