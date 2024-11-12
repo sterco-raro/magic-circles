@@ -122,6 +122,7 @@ text = "Radius"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
+rounded = true
 
 [node name="DoubleLine" type="HBoxContainer" parent="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/InnerCircle/CategoryBody/VBoxContainer"]
 layout_mode = 2
@@ -151,6 +152,7 @@ text = "Double line spacing"
 [node name="InnSpacingSlider" type="HSlider" parent="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/InnerCircle/CategoryBody/VBoxContainer/InnerDoubleSpacing"]
 unique_name_in_owner = true
 layout_mode = 2
+rounded = true
 
 [node name="Rings" type="VBoxContainer" parent="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/InnerCircle/CategoryBody/VBoxContainer"]
 layout_mode = 2
@@ -182,6 +184,7 @@ text = "Number"
 [node name="InnRingsNumberSlider" type="HSlider" parent="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/InnerCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer/Number"]
 unique_name_in_owner = true
 layout_mode = 2
+rounded = true
 
 [node name="Radius" type="VBoxContainer" parent="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/InnerCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer"]
 layout_mode = 2
@@ -194,6 +197,7 @@ text = "Radius"
 [node name="InnRingsRadiusSlider" type="HSlider" parent="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/InnerCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer/Radius"]
 unique_name_in_owner = true
 layout_mode = 2
+rounded = true
 
 [node name="Offset" type="VBoxContainer" parent="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/InnerCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer"]
 layout_mode = 2
@@ -206,6 +210,7 @@ text = "Position offset"
 [node name="InnRingsOffsetSlider" type="HSlider" parent="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/InnerCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer/Offset"]
 unique_name_in_owner = true
 layout_mode = 2
+rounded = true
 
 [node name="OuterCircle" type="VBoxContainer" parent="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -248,6 +253,7 @@ text = "Radius"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
+rounded = true
 
 [node name="DoubleLine" type="HBoxContainer" parent="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/OuterCircle/CategoryBody/VBoxContainer"]
 layout_mode = 2
@@ -277,6 +283,7 @@ text = "Double line spacing"
 [node name="OutSpacingSlider" type="HSlider" parent="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/OuterCircle/CategoryBody/VBoxContainer/OuterDoubleSpacing"]
 unique_name_in_owner = true
 layout_mode = 2
+rounded = true
 
 [node name="Rings" type="VBoxContainer" parent="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/OuterCircle/CategoryBody/VBoxContainer"]
 layout_mode = 2
@@ -308,6 +315,7 @@ text = "Number"
 [node name="OutRingsNumberSlider" type="HSlider" parent="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/OuterCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer/Number"]
 unique_name_in_owner = true
 layout_mode = 2
+rounded = true
 
 [node name="Radius" type="VBoxContainer" parent="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/OuterCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer"]
 layout_mode = 2
@@ -320,6 +328,7 @@ text = "Radius"
 [node name="OutRingsRadiusSlider" type="HSlider" parent="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/OuterCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer/Radius"]
 unique_name_in_owner = true
 layout_mode = 2
+rounded = true
 
 [node name="Offset" type="VBoxContainer" parent="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/OuterCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer"]
 layout_mode = 2
@@ -332,6 +341,7 @@ text = "Position offset"
 [node name="OutRingsOffsetSlider" type="HSlider" parent="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/OuterCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer/Offset"]
 unique_name_in_owner = true
 layout_mode = 2
+rounded = true
 
 [connection signal="color_changed" from="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/General/CategoryBody/VBoxContainer/Color/ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]
 [connection signal="toggled" from="UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/InnerCircle/CategoryHeader/MarginContainer/InnerCircleToggle" to="." method="_on_inner_circle_toggle_toggled"]
