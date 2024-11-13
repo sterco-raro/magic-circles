@@ -18,6 +18,7 @@ text = "Circle"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 button_pressed = true
 
 [node name="SectionBody" type="MarginContainer" parent="."]
@@ -40,6 +41,7 @@ text = "Radius"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 rounded = true
 
 [node name="Color" type="HBoxContainer" parent="SectionBody/VBoxContainer"]
@@ -55,6 +57,7 @@ text = "Line color"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 
 [node name="DoubleLine" type="HBoxContainer" parent="SectionBody/VBoxContainer"]
 layout_mode = 2
@@ -69,6 +72,8 @@ text = "Double line"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
+button_pressed = true
 
 [node name="DoubleLineSpacing" type="HBoxContainer" parent="SectionBody/VBoxContainer"]
 layout_mode = 2
@@ -83,6 +88,7 @@ text = "Double line spacing"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 rounded = true
 
 [node name="Rings" type="VBoxContainer" parent="SectionBody/VBoxContainer"]
@@ -101,6 +107,8 @@ text = "Rings"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
+button_pressed = true
 
 [node name="Body" type="MarginContainer" parent="SectionBody/VBoxContainer/Rings"]
 layout_mode = 2
@@ -122,6 +130,7 @@ text = "Number"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 min_value = 1.0
 value = 1.0
 rounded = true
@@ -139,6 +148,7 @@ text = "Radius"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 rounded = true
 
 [node name="Offset" type="HBoxContainer" parent="SectionBody/VBoxContainer/Rings/Body/VBoxContainer"]
@@ -154,7 +164,24 @@ text = "Offset"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 rounded = true
 
-[connection signal="update_section_toggle" from="." to="." method="_on_update_section_toggle"]
+[connection signal="double_line_spacing_top" from="." to="." method="_on_double_line_spacing_top"]
+[connection signal="double_line_toggle_top" from="." to="." method="_on_double_line_toggle_top"]
+[connection signal="line_color_top" from="." to="." method="_on_line_color_top"]
+[connection signal="radius_slider_top" from="." to="." method="_on_radius_slider_top"]
+[connection signal="rings_number_top" from="." to="." method="_on_rings_number_top"]
+[connection signal="rings_offset_top" from="." to="." method="_on_rings_offset_top"]
+[connection signal="rings_radius_top" from="." to="." method="_on_rings_radius_top"]
+[connection signal="rings_toggle_top" from="." to="." method="_on_rings_toggle_top"]
+[connection signal="section_toggle_top" from="." to="." method="_on_section_toggle_top"]
 [connection signal="toggled" from="SectionHeader/SectionToggle" to="." method="_on_section_toggle_toggled"]
+[connection signal="value_changed" from="SectionBody/VBoxContainer/Radius/RadiusSlider" to="." method="_on_radius_slider_value_changed"]
+[connection signal="color_changed" from="SectionBody/VBoxContainer/Color/LineColorButton" to="." method="_on_line_color_button_color_changed"]
+[connection signal="toggled" from="SectionBody/VBoxContainer/DoubleLine/DoubleLineToggle" to="." method="_on_double_line_toggle_toggled"]
+[connection signal="value_changed" from="SectionBody/VBoxContainer/DoubleLineSpacing/DoubleLineSpacingSlider" to="." method="_on_double_line_spacing_slider_value_changed"]
+[connection signal="toggled" from="SectionBody/VBoxContainer/Rings/Header/RingsToggle" to="." method="_on_rings_toggle_toggled"]
+[connection signal="value_changed" from="SectionBody/VBoxContainer/Rings/Body/VBoxContainer/Number/RingsNumberSlider" to="." method="_on_rings_number_slider_value_changed"]
+[connection signal="value_changed" from="SectionBody/VBoxContainer/Rings/Body/VBoxContainer/Radius/RingsRadiusSlider" to="." method="_on_rings_radius_slider_value_changed"]
+[connection signal="value_changed" from="SectionBody/VBoxContainer/Rings/Body/VBoxContainer/Offset/RingsOffsetSlider" to="." method="_on_rings_offset_slider_value_changed"]

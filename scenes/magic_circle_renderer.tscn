@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dhwj8m508mqy1"]
 
-[ext_resource type="Script" path="res://scripts/Renderer.gd" id="1_kg6p0"]
+[ext_resource type="Script" path="res://scripts/magic_circle_renderer.gd" id="1_kg6p0"]
 
 [node name="MagicCircleRenderer" type="Node2D"]
 script = ExtResource("1_kg6p0")
@@ -12,6 +12,7 @@ script = ExtResource("1_kg6p0")
 [connection signal="set_inner_rings_number" from="." to="." method="_on_set_inner_rings_number"]
 [connection signal="set_inner_rings_offset" from="." to="." method="_on_set_inner_rings_offset"]
 [connection signal="set_inner_rings_radius" from="." to="." method="_on_set_inner_rings_radius"]
+[connection signal="set_inner_rings_visibility" from="." to="." method="_on_set_inner_rings_visibility"]
 [connection signal="set_inner_spacing" from="." to="." method="_on_set_inner_spacing"]
 [connection signal="set_inner_visibility" from="." to="." method="_on_set_inner_visibility"]
 [connection signal="set_outer_double" from="." to="." method="_on_set_outer_double"]
@@ -20,5 +21,6 @@ script = ExtResource("1_kg6p0")
 [connection signal="set_outer_rings_number" from="." to="." method="_on_set_outer_rings_number"]
 [connection signal="set_outer_rings_offset" from="." to="." method="_on_set_outer_rings_offset"]
 [connection signal="set_outer_rings_radius" from="." to="." method="_on_set_outer_rings_radius"]
+[connection signal="set_outer_rings_visibility" from="." to="." method="_on_set_outer_rings_visibility"]
 [connection signal="set_outer_spacing" from="." to="." method="_on_set_outer_spacing"]
 [connection signal="set_outer_visibility" from="." to="." method="_on_set_outer_visibility"]

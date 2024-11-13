@@ -1,5 +1,7 @@
 class_name MagicCircleRenderer extends Node2D
 
+
+#region SIGNALS
 signal set_data(circle: MagicCircle)
 
 signal set_inner_visibility(value: bool)
@@ -7,6 +9,7 @@ signal set_inner_line_color(value: Color)
 signal set_inner_radius(value: int)
 signal set_inner_double(value: bool)
 signal set_inner_spacing(value: int)
+signal set_inner_rings_visibility(value: bool)
 signal set_inner_rings_number(value: int)
 signal set_inner_rings_radius(value: int)
 signal set_inner_rings_offset(value: float)
@@ -16,37 +19,32 @@ signal set_outer_line_color(value: Color)
 signal set_outer_radius(value: int)
 signal set_outer_double(value: bool)
 signal set_outer_spacing(value: int)
+signal set_outer_rings_visibility(value: bool)
 signal set_outer_rings_number(value: int)
 signal set_outer_rings_radius(value: int)
 signal set_outer_rings_offset(value: float)
+#endregion
+
 
 var _circle: MagicCircle
-
 var _inner_circle_line_color: Color = Color.BEIGE
 var _outer_circle_line_color: Color = Color.BEIGE
 
-var _is_inner_circle_visible: bool = true
-var _is_outer_circle_visible: bool = true
 
+#region BUILTIN FUNCTIONS
 func _draw() -> void:
 	if _circle:
-		if _is_inner_circle_visible:
+		if _circle.inner.enabled:
 			draw_magic_arc(_circle.inner, _circle.position, _inner_circle_line_color, 2)
-		if _is_outer_circle_visible:
+		if _circle.outer.enabled:
 			draw_magic_arc(_circle.outer, _circle.position, _outer_circle_line_color, 2)
+#endregion
 
+
+#region CUSTOM FUNCTIONS
 func draw_magic_arc(arc: MagicArc, center: Vector2, color: Color, width: int) -> void:
-
-	# Simple circles
-	if not arc.rings:
-		if arc.double:
-			draw_arc(center, arc.radius - arc.spacing, 0, 2*PI, 200, color, width, true)
-			draw_arc(center, arc.radius + arc.spacing, 0, 2*PI, 200, color, width, true)
-		else:
-			draw_arc(center, arc.radius, 0, 2*PI, 200, color, width, true)
-
 	# Circles with smaller rings on it
-	else:
+	if arc.rings_enabled and arc.rings > 0:
 		var ring_center: Vector2 = Vector2(
 			center.x + arc.radius * cos(arc.rings_offset_rad),
 			center.y + arc.radius * sin(arc.rings_offset_rad)
@@ -77,6 +75,14 @@ func draw_magic_arc(arc: MagicArc, center: Vector2, color: Color, width: int) ->
 
 			# Update starting point for the next iteration
 			start_angle_rad = end_angle_rad + ring_angle
+
+	# Simple circles
+	else:
+		if arc.double:
+			draw_arc(center, arc.radius - arc.spacing, 0, 2*PI, 200, color, width, true)
+			draw_arc(center, arc.radius + arc.spacing, 0, 2*PI, 200, color, width, true)
+		else:
+			draw_arc(center, arc.radius, 0, 2*PI, 200, color, width, true)
 
 func circles_intersections(c0: Vector2, c1: Vector2, r0: float, r1: float):
 	# TODO skip cases based on dist
@@ -112,14 +118,16 @@ func angle_between_tangents(center1: Vector2, center2: Vector2, radius1: float, 
 		return acos(0)
 	else:
 		return acos( p1.dot(p2) / length_product )
+#endregion
 
-#region SIGNALS
+
+#region SIGNAL HANDLERS
 func _on_set_data(circle: MagicCircle) -> void:
 	_circle = circle
 	queue_redraw()
 
 func _on_set_inner_visibility(value: bool) -> void:
-	_is_inner_circle_visible = value
+	_circle.inner.enabled = value
 	queue_redraw()
 
 func _on_set_inner_line_color(value: Color) -> void:
@@ -141,6 +149,10 @@ func _on_set_inner_spacing(value: int) -> void:
 		_circle.inner.spacing = value
 		queue_redraw()
 
+func _on_set_inner_rings_visibility(value: bool) -> void:
+	_circle.inner.rings_enabled = value
+	queue_redraw()
+
 func _on_set_inner_rings_number(value: int) -> void:
 	if _circle:
 		_circle.inner.rings = value
@@ -158,7 +170,7 @@ func _on_set_inner_rings_radius(value: int) -> void:
 		queue_redraw()
 
 func _on_set_outer_visibility(value: bool) -> void:
-	_is_outer_circle_visible = value
+	_circle.outer.enabled = value
 	queue_redraw()
 
 func _on_set_outer_line_color(value: Color) -> void:
@@ -179,6 +191,10 @@ func _on_set_outer_spacing(value: int) -> void:
 	if _circle:
 		_circle.outer.spacing = value
 		queue_redraw()
+
+func _on_set_outer_rings_visibility(value: bool) -> void:
+	_circle.outer.rings_enabled = value
+	queue_redraw()
 
 func _on_set_outer_rings_number(value: int) -> void:
 	if _circle:

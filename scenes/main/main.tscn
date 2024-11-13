@@ -23,5 +23,3 @@ texture = ExtResource("2_vl50m")
 
 [node name="SettingsPanel" parent="UI" instance=ExtResource("5_wsskw")]
 unique_name_in_owner = true
-
-[connection signal="background_color_changed" from="UI/SettingsPanel" to="." method="_on_settings_background_color_changed"]

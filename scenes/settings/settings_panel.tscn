@@ -27,12 +27,13 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 16
 
 [node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer"]
-custom_minimum_size = Vector2(0, 648)
 layout_mode = 2
 horizontal_scroll_mode = 0
 
 [node name="SettingsList" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="General" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList"]
 layout_mode = 2
@@ -62,157 +63,48 @@ text = "Background"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 
 [node name="InnerCircle" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList" instance=ExtResource("3_s48jy")]
-layout_mode = 2
-
-[node name="OuterCircle" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList"]
-layout_mode = 2
-
-[node name="CategoryHeader" type="HBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryHeader"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 16
-text = "Outer Circle"
-
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryHeader"]
-layout_mode = 2
-theme_override_constants/margin_left = 34
-
-[node name="OuterCircleToggle" type="CheckButton" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryHeader/MarginContainer"]
-layout_mode = 2
-button_pressed = true
-
-[node name="CategoryBody" type="MarginContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle"]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 4
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody"]
-layout_mode = 2
-
-[node name="Color" type="HBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Color"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = "Line color"
-
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Color"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-
-[node name="OuterLineColorButton" type="ColorPickerButton" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Color/MarginContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(120, 0)
-layout_mode = 2
-
-[node name="Radius" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Radius"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = "Radius"
-
-[node name="OutRadiusSlider" type="HSlider" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Radius"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(110, 0)
-layout_mode = 2
-rounded = true
-
-[node name="DoubleLine" type="HBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/DoubleLine"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = "Double line"
-
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/DoubleLine"]
-layout_mode = 2
-theme_override_constants/margin_left = 64
-
-[node name="OutDoubleButton" type="CheckButton" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/DoubleLine/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+SECTION_TITLE = "Inner Circle"
+RADIUS_MIN = 60.0
+RADIUS_MAX = 120.0
+SPACING_MIN = 3.0
+SPACING_MAX = 10.0
+RINGS_NUMBER_MAX = 8.0
+RINGS_RADIUS_MIN = 8.0
+RINGS_RADIUS_MAX = 32.0
 
-[node name="OuterDoubleSpacing" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer"]
+[node name="OuterCircle" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList" instance=ExtResource("3_s48jy")]
 unique_name_in_owner = true
 layout_mode = 2
+SECTION_TITLE = "Outer Circle"
+RADIUS_MIN = 180.0
+RADIUS_MAX = 320.0
+SPACING_MIN = 3.0
+SPACING_MAX = 10.0
+RINGS_NUMBER_MAX = 16.0
+RINGS_RADIUS_MIN = 8.0
+RINGS_RADIUS_MAX = 32.0
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/OuterDoubleSpacing"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = "Double line spacing"
-
-[node name="OutSpacingSlider" type="HSlider" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/OuterDoubleSpacing"]
-unique_name_in_owner = true
-layout_mode = 2
-rounded = true
-
-[node name="Rings" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer"]
-layout_mode = 2
-
-[node name="SubCategoryLabel" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Rings"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 14
-text = "Rings
-"
-
-[node name="SubCategoryBody" type="MarginContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Rings"]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 4
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody"]
-layout_mode = 2
-
-[node name="Number" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer/Number"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = "Number"
-
-[node name="OutRingsNumberSlider" type="HSlider" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer/Number"]
-unique_name_in_owner = true
-layout_mode = 2
-rounded = true
-
-[node name="Radius" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer/Radius"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = "Radius"
-
-[node name="OutRingsRadiusSlider" type="HSlider" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer/Radius"]
-unique_name_in_owner = true
-layout_mode = 2
-rounded = true
-
-[node name="Offset" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer/Offset"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = "Position offset"
-
-[node name="OutRingsOffsetSlider" type="HSlider" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer/Offset"]
-unique_name_in_owner = true
-layout_mode = 2
-rounded = true
-
-[connection signal="update_background_color" from="." to="." method="_on_update_background_color"]
 [connection signal="color_changed" from="PanelContainer/MarginContainer/ScrollContainer/SettingsList/General/Body/VBoxContainer/Color/BackgroundColorPickerButton" to="." method="_on_background_color_picker_button_color_changed"]
+[connection signal="double_line_spacing_bottom" from="PanelContainer/MarginContainer/ScrollContainer/SettingsList/InnerCircle" to="." method="_on_inner_circle_double_line_spacing_bottom"]
+[connection signal="double_line_toggle_bottom" from="PanelContainer/MarginContainer/ScrollContainer/SettingsList/InnerCircle" to="." method="_on_inner_circle_double_line_toggle_bottom"]
+[connection signal="line_color_bottom" from="PanelContainer/MarginContainer/ScrollContainer/SettingsList/InnerCircle" to="." method="_on_inner_circle_line_color_bottom"]
+[connection signal="radius_slider_bottom" from="PanelContainer/MarginContainer/ScrollContainer/SettingsList/InnerCircle" to="." method="_on_inner_circle_radius_slider_bottom"]
+[connection signal="rings_number_bottom" from="PanelContainer/MarginContainer/ScrollContainer/SettingsList/InnerCircle" to="." method="_on_inner_circle_rings_number_bottom"]
+[connection signal="rings_offset_bottom" from="PanelContainer/MarginContainer/ScrollContainer/SettingsList/InnerCircle" to="." method="_on_inner_circle_rings_offset_bottom"]
+[connection signal="rings_radius_bottom" from="PanelContainer/MarginContainer/ScrollContainer/SettingsList/InnerCircle" to="." method="_on_inner_circle_rings_radius_bottom"]
+[connection signal="rings_toggle_bottom" from="PanelContainer/MarginContainer/ScrollContainer/SettingsList/InnerCircle" to="." method="_on_inner_circle_rings_toggle_bottom"]
+[connection signal="section_toggle_bottom" from="PanelContainer/MarginContainer/ScrollContainer/SettingsList/InnerCircle" to="." method="_on_inner_circle_section_toggle_bottom"]
+[connection signal="double_line_spacing_bottom" from="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle" to="." method="_on_outer_circle_double_line_spacing_bottom"]
+[connection signal="double_line_toggle_bottom" from="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle" to="." method="_on_outer_circle_double_line_toggle_bottom"]
+[connection signal="line_color_bottom" from="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle" to="." method="_on_outer_circle_line_color_bottom"]
+[connection signal="radius_slider_bottom" from="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle" to="." method="_on_outer_circle_radius_slider_bottom"]
+[connection signal="rings_number_bottom" from="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle" to="." method="_on_outer_circle_rings_number_bottom"]
+[connection signal="rings_offset_bottom" from="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle" to="." method="_on_outer_circle_rings_offset_bottom"]
+[connection signal="rings_radius_bottom" from="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle" to="." method="_on_outer_circle_rings_radius_bottom"]
+[connection signal="rings_toggle_bottom" from="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle" to="." method="_on_outer_circle_rings_toggle_bottom"]
+[connection signal="section_toggle_bottom" from="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle" to="." method="_on_outer_circle_section_toggle_bottom"]
