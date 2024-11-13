@@ -7,7 +7,7 @@ static func generate() -> MagicCircle:
 	circle.position = Vector2(0, 0)
 
 	#region INNER CIRCLE
-	circle.inner = MagicArc.new()
+	circle.inner = MagicDisk.new()
 
 	circle.inner.enabled = true if randf() > 0.2 else false
 	circle.inner.radius = randi_range(Constants.INNER_CIRCLE_RADIUS_MIN, Constants.INNER_CIRCLE_RADIUS_MAX)
@@ -27,7 +27,7 @@ static func generate() -> MagicCircle:
 	#endregion
 
 	#region OUTER CIRCLE
-	circle.outer = MagicArc.new()
+	circle.outer = MagicDisk.new()
 
 	circle.outer.enabled = true if randf() > 0.2 else false
 	circle.outer.radius = randi_range(Constants.OUTER_CIRCLE_RADIUS_MIN, Constants.OUTER_CIRCLE_RADIUS_MAX)

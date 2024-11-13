@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://dhwj8m508mqy1"]
 
-[ext_resource type="Script" path="res://scripts/magic_circle_renderer.gd" id="1_kg6p0"]
+[ext_resource type="Script" path="res://scripts/renderer.gd" id="1_p08m0"]
 
 [node name="MagicCircleRenderer" type="Node2D"]
-script = ExtResource("1_kg6p0")
+script = ExtResource("1_p08m0")
 
 [connection signal="set_data" from="." to="." method="_on_set_data"]
 [connection signal="set_inner_double" from="." to="." method="_on_set_inner_double"]

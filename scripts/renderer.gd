@@ -42,47 +42,47 @@ func _draw() -> void:
 
 
 #region CUSTOM FUNCTIONS
-func draw_magic_arc(arc: MagicArc, center: Vector2, color: Color, width: int) -> void:
+func draw_magic_arc(disk: MagicDisk, center: Vector2, color: Color, width: int) -> void:
 	# Circles with smaller rings on it
-	if arc.rings_enabled and arc.rings > 0:
+	if disk.rings_enabled and disk.rings > 0:
 		var ring_center: Vector2 = Vector2(
-			center.x + arc.radius * cos(arc.rings_offset_rad),
-			center.y + arc.radius * sin(arc.rings_offset_rad)
+			center.x + disk.radius * cos(disk.rings_offset_rad),
+			center.y + disk.radius * sin(disk.rings_offset_rad)
 		)
-		var ring_angle: float = abs(angle_between_tangents(center, ring_center, arc.radius, arc.rings_radius))
+		var ring_angle: float = abs(angle_between_tangents(center, ring_center, disk.radius, disk.rings_radius))
 
-		# The main arc draw process starting and ending angles
+		# The main disk draw process starting and ending angles
 		var end_angle_rad: float = 0
-		var start_angle_rad: float = arc.rings_offset_rad + ring_angle/2
+		var start_angle_rad: float = disk.rings_offset_rad + ring_angle/2
 
-		for i in arc.rings:
+		for i in disk.rings:
 			# Compute current ring center coordinates
-			ring_center.x = center.x + arc.radius * cos(arc.rings_offset_rad + arc.rings_distance_rad * i)
-			ring_center.y = center.y + arc.radius * sin(arc.rings_offset_rad + arc.rings_distance_rad * i)
+			ring_center.x = center.x + disk.radius * cos(disk.rings_offset_rad + disk.rings_distance_rad * i)
+			ring_center.y = center.y + disk.radius * sin(disk.rings_offset_rad + disk.rings_distance_rad * i)
 
-			# Where to stop drawing the main arc for the current circular sector
-			end_angle_rad = start_angle_rad + arc.rings_distance_rad - ring_angle
+			# Where to stop drawing the main disk for the current circular sector
+			end_angle_rad = start_angle_rad + disk.rings_distance_rad - ring_angle
 
 			# Draw circular sector
-			if arc.double:
-				draw_arc(center, arc.radius - arc.spacing, start_angle_rad, end_angle_rad, 200, color, width, true)
-				draw_arc(center, arc.radius + arc.spacing, start_angle_rad, end_angle_rad, 200, color, width, true)
+			if disk.double:
+				draw_arc(center, disk.radius - disk.spacing, start_angle_rad, end_angle_rad, 200, color, width, true)
+				draw_arc(center, disk.radius + disk.spacing, start_angle_rad, end_angle_rad, 200, color, width, true)
 			else:
-				draw_arc(center, arc.radius, start_angle_rad, end_angle_rad, 200, color, width, true)
+				draw_arc(center, disk.radius, start_angle_rad, end_angle_rad, 200, color, width, true)
 
 			# Draw ring at the start of the current sector
-			draw_arc(ring_center, arc.rings_radius, 0, 2*PI, 100, color, width, true)
+			draw_arc(ring_center, disk.rings_radius, 0, 2*PI, 100, color, width, true)
 
 			# Update starting point for the next iteration
 			start_angle_rad = end_angle_rad + ring_angle
 
 	# Simple circles
 	else:
-		if arc.double:
-			draw_arc(center, arc.radius - arc.spacing, 0, 2*PI, 200, color, width, true)
-			draw_arc(center, arc.radius + arc.spacing, 0, 2*PI, 200, color, width, true)
+		if disk.double:
+			draw_arc(center, disk.radius - disk.spacing, 0, 2*PI, 200, color, width, true)
+			draw_arc(center, disk.radius + disk.spacing, 0, 2*PI, 200, color, width, true)
 		else:
-			draw_arc(center, arc.radius, 0, 2*PI, 200, color, width, true)
+			draw_arc(center, disk.radius, 0, 2*PI, 200, color, width, true)
 
 func circles_intersections(c0: Vector2, c1: Vector2, r0: float, r1: float):
 	# TODO skip cases based on dist
