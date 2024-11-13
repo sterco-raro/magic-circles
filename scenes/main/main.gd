@@ -5,7 +5,7 @@ extends Node2D
 var background: Sprite2D = $Background
 
 @onready
-var background_color_picker: ColorPickerButton = %BackgroundColorPickerButton
+var settings: SettingsPanel = %Settings
 
 @onready
 var inner_ui_body: MarginContainer = $UI/Settings/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/InnerCircle/CategoryBody
@@ -116,13 +116,13 @@ func reset():
 	var color: Color = Color(randf(), randf(), randf(), 1)
 
 	renderer.set_data.emit(circle)
+	renderer.set_inner_line_color.emit(color)
+	renderer.set_outer_line_color.emit(color)
 
 	#region UPDATE UI CONTROLS
 	# Section: general
-	renderer.set_inner_line_color.emit(color)
-	renderer.set_outer_line_color.emit(color)
-	background_color_picker.color = color / 2
-	update_background_color(color / 2)
+	settings.update_background_color.emit( color/2 )
+	update_background_color( color/2 )
 
 	# Section: inner circle
 	inner_line_color_picker.color = color
@@ -167,9 +167,6 @@ func update_outer_rings_controls_visibility(visibility: bool):
 #endregion
 
 #region SIGNALS
-func _on_background_color_picker_button_color_changed(color: Color) -> void:
-	update_background_color(color)
-
 func _on_inner_circle_toggle_toggled(toggled_on: bool) -> void:
 	renderer.set_inner_draw_toggle.emit(toggled_on)
 	inner_ui_body.visible = toggled_on
@@ -224,3 +221,7 @@ func _on_out_rings_radius_slider_value_changed(value: float) -> void:
 func _on_out_rings_offset_slider_value_changed(value: float) -> void:
 	renderer.set_outer_rings_offset.emit(deg_to_rad(value))
 #endregion
+
+# TMP NEW HANDLERS
+func _on_settings_background_color_changed(color: Color) -> void:
+	update_background_color(color)

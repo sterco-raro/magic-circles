@@ -1,0 +1,160 @@
+[gd_scene load_steps=2 format=3 uid="uid://brgyc1ncvpiuw"]
+
+[ext_resource type="Script" path="res://scenes/settings/circle_ui_section.gd" id="1_6dwy2"]
+
+[node name="CircleUISection" type="VBoxContainer"]
+script = ExtResource("1_6dwy2")
+
+[node name="SectionHeader" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SectionHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "Circle"
+
+[node name="SectionToggle" type="CheckButton" parent="SectionHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+button_pressed = true
+
+[node name="SectionBody" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SectionBody"]
+layout_mode = 2
+
+[node name="Radius" type="HBoxContainer" parent="SectionBody/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SectionBody/VBoxContainer/Radius"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 10
+text = "Radius"
+
+[node name="RadiusSlider" type="HSlider" parent="SectionBody/VBoxContainer/Radius"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+rounded = true
+
+[node name="Color" type="HBoxContainer" parent="SectionBody/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SectionBody/VBoxContainer/Color"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 10
+text = "Line color"
+
+[node name="LineColorButton" type="ColorPickerButton" parent="SectionBody/VBoxContainer/Color"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DoubleLine" type="HBoxContainer" parent="SectionBody/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SectionBody/VBoxContainer/DoubleLine"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 10
+text = "Double line"
+
+[node name="DoubleLineToggle" type="CheckButton" parent="SectionBody/VBoxContainer/DoubleLine"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DoubleLineSpacing" type="HBoxContainer" parent="SectionBody/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SectionBody/VBoxContainer/DoubleLineSpacing"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 10
+text = "Double line spacing"
+
+[node name="DoubleLineSpacingSlider" type="HSlider" parent="SectionBody/VBoxContainer/DoubleLineSpacing"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+rounded = true
+
+[node name="Rings" type="VBoxContainer" parent="SectionBody/VBoxContainer"]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="SectionBody/VBoxContainer/Rings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SectionBody/VBoxContainer/Rings/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "Rings"
+
+[node name="RingsToggle" type="CheckButton" parent="SectionBody/VBoxContainer/Rings/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Body" type="MarginContainer" parent="SectionBody/VBoxContainer/Rings"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SectionBody/VBoxContainer/Rings/Body"]
+layout_mode = 2
+
+[node name="Number" type="HBoxContainer" parent="SectionBody/VBoxContainer/Rings/Body/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SectionBody/VBoxContainer/Rings/Body/VBoxContainer/Number"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 10
+text = "Number"
+
+[node name="RingsNumberSlider" type="HSlider" parent="SectionBody/VBoxContainer/Rings/Body/VBoxContainer/Number"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+value = 1.0
+rounded = true
+
+[node name="Radius" type="HBoxContainer" parent="SectionBody/VBoxContainer/Rings/Body/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SectionBody/VBoxContainer/Rings/Body/VBoxContainer/Radius"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 10
+text = "Radius"
+
+[node name="RingsRadiusSlider" type="HSlider" parent="SectionBody/VBoxContainer/Rings/Body/VBoxContainer/Radius"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+rounded = true
+
+[node name="Offset" type="HBoxContainer" parent="SectionBody/VBoxContainer/Rings/Body/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SectionBody/VBoxContainer/Rings/Body/VBoxContainer/Offset"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 10
+text = "Offset"
+
+[node name="RingsOffsetSlider" type="HSlider" parent="SectionBody/VBoxContainer/Rings/Body/VBoxContainer/Offset"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+rounded = true
+
+[connection signal="update_section_toggle" from="." to="." method="_on_update_section_toggle"]
+[connection signal="toggled" from="SectionHeader/SectionToggle" to="." method="_on_section_toggle_toggled"]

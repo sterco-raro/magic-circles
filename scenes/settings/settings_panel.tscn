@@ -1,0 +1,218 @@
+[gd_scene load_steps=4 format=3 uid="uid://luyvd6byu4p2"]
+
+[ext_resource type="Script" path="res://scenes/settings/settings_panel.gd" id="1_d7oeo"]
+[ext_resource type="StyleBox" uid="uid://bvfw2mamqhny6" path="res://scenes/main/side_panel_flat.tres" id="1_ec2m2"]
+[ext_resource type="PackedScene" uid="uid://brgyc1ncvpiuw" path="res://scenes/settings/circle_ui_section.tscn" id="3_s48jy"]
+
+[node name="SettingsPanel" type="MarginContainer"]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 262.0
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+script = ExtResource("1_d7oeo")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("1_ec2m2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 16
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 648)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="SettingsList" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="General" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/General"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "General"
+
+[node name="Body" type="MarginContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/General"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/General/Body"]
+layout_mode = 2
+
+[node name="Color" type="HBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/General/Body/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/General/Body/VBoxContainer/Color"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 10
+text = "Background"
+
+[node name="BackgroundColorPickerButton" type="ColorPickerButton" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/General/Body/VBoxContainer/Color"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InnerCircle" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList" instance=ExtResource("3_s48jy")]
+layout_mode = 2
+
+[node name="OuterCircle" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList"]
+layout_mode = 2
+
+[node name="CategoryHeader" type="HBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryHeader"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Outer Circle"
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryHeader"]
+layout_mode = 2
+theme_override_constants/margin_left = 34
+
+[node name="OuterCircleToggle" type="CheckButton" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryHeader/MarginContainer"]
+layout_mode = 2
+button_pressed = true
+
+[node name="CategoryBody" type="MarginContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody"]
+layout_mode = 2
+
+[node name="Color" type="HBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Color"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Line color"
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Color"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+
+[node name="OuterLineColorButton" type="ColorPickerButton" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Color/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="Radius" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Radius"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Radius"
+
+[node name="OutRadiusSlider" type="HSlider" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Radius"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+rounded = true
+
+[node name="DoubleLine" type="HBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/DoubleLine"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Double line"
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/DoubleLine"]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+
+[node name="OutDoubleButton" type="CheckButton" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/DoubleLine/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="OuterDoubleSpacing" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/OuterDoubleSpacing"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Double line spacing"
+
+[node name="OutSpacingSlider" type="HSlider" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/OuterDoubleSpacing"]
+unique_name_in_owner = true
+layout_mode = 2
+rounded = true
+
+[node name="Rings" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer"]
+layout_mode = 2
+
+[node name="SubCategoryLabel" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Rings"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Rings
+"
+
+[node name="SubCategoryBody" type="MarginContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Rings"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody"]
+layout_mode = 2
+
+[node name="Number" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer/Number"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Number"
+
+[node name="OutRingsNumberSlider" type="HSlider" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer/Number"]
+unique_name_in_owner = true
+layout_mode = 2
+rounded = true
+
+[node name="Radius" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer/Radius"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Radius"
+
+[node name="OutRingsRadiusSlider" type="HSlider" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer/Radius"]
+unique_name_in_owner = true
+layout_mode = 2
+rounded = true
+
+[node name="Offset" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer/Offset"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Position offset"
+
+[node name="OutRingsOffsetSlider" type="HSlider" parent="PanelContainer/MarginContainer/ScrollContainer/SettingsList/OuterCircle/CategoryBody/VBoxContainer/Rings/SubCategoryBody/VBoxContainer/Offset"]
+unique_name_in_owner = true
+layout_mode = 2
+rounded = true
+
+[connection signal="update_background_color" from="." to="." method="_on_update_background_color"]
+[connection signal="color_changed" from="PanelContainer/MarginContainer/ScrollContainer/SettingsList/General/Body/VBoxContainer/Color/BackgroundColorPickerButton" to="." method="_on_background_color_picker_button_color_changed"]
