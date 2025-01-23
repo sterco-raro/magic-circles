@@ -35,9 +35,9 @@ var _outer_circle_line_color: Color = Color.BEIGE
 func _draw() -> void:
 	if _circle:
 		if _circle.inner.enabled:
-			draw_magic_arc(_circle.inner, _circle.position, _inner_circle_line_color, 2)
+			draw_magic_arc(_circle.inner, _circle.position, _circle.inner.line_color, 2)
 		if _circle.outer.enabled:
-			draw_magic_arc(_circle.outer, _circle.position, _outer_circle_line_color, 2)
+			draw_magic_arc(_circle.outer, _circle.position, _circle.outer.line_color, 2)
 #endregion
 
 
@@ -131,7 +131,7 @@ func _on_set_inner_visibility(value: bool) -> void:
 	queue_redraw()
 
 func _on_set_inner_line_color(value: Color) -> void:
-	_inner_circle_line_color = value
+	_circle.inner.line_color = value
 	queue_redraw()
 
 func _on_set_inner_radius(value: int) -> void:
@@ -174,7 +174,7 @@ func _on_set_outer_visibility(value: bool) -> void:
 	queue_redraw()
 
 func _on_set_outer_line_color(value: Color) -> void:
-	_outer_circle_line_color = value
+	_circle.outer.line_color = value
 	queue_redraw()
 
 func _on_set_outer_radius(value: int) -> void:

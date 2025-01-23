@@ -1,14 +1,14 @@
 [gd_scene load_steps=7 format=3 uid="uid://3ws1pgsq3760"]
 
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_3waeb"]
-[ext_resource type="Shader" path="res://scenes/main/static-background.gdshader" id="2_3dt4e"]
 [ext_resource type="PackedScene" uid="uid://dhwj8m508mqy1" path="res://scenes/magic_circle_renderer.tscn" id="2_5d5ye"]
+[ext_resource type="Shader" path="res://scenes/main/static-background.gdshader" id="2_os46t"]
 [ext_resource type="Texture2D" uid="uid://ddxhygtnannhi" path="res://assets/background.png" id="2_vl50m"]
 [ext_resource type="PackedScene" uid="uid://luyvd6byu4p2" path="res://scenes/settings/settings_panel.tscn" id="5_wsskw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rncf1"]
-shader = ExtResource("2_3dt4e")
-shader_parameter/background_color = Color(1, 1, 1, 1)
+shader = ExtResource("2_os46t")
+shader_parameter/background_color = null
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_3waeb")

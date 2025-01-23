@@ -10,7 +10,10 @@ static func generate() -> MagicCircle:
 	circle.inner = MagicDisk.new()
 
 	circle.inner.enabled = true if randf() > 0.15 else false
+
 	circle.inner.radius = randi_range(Constants.INNER_CIRCLE_RADIUS_MIN, Constants.INNER_CIRCLE_RADIUS_MAX)
+
+	circle.inner.line_color = Color(randf(), randf(), randf(), 1)
 	circle.inner.double = true if randf() > 0.5 else false
 	circle.inner.spacing = randi_range(Constants.INNER_CIRCLE_SPACING_MIN, Constants.INNER_CIRCLE_SPACING_MAX)
 

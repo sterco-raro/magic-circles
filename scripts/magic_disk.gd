@@ -2,7 +2,10 @@ class_name MagicDisk extends RefCounted
 
 # Main disk
 var enabled: bool
+
 var radius: float
+
+var line_color: Color
 var double: bool # Single or double line
 var spacing: int # Double line spacing
 
